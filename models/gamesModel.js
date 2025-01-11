@@ -20,7 +20,7 @@ export const getAllGames = () => {
     });
 };
 
-export const getGamesByName = (tittle = '') => {
+export const getGamesByName = (title = '') => {
     return new Promise((resolve, reject) => {
          //Read Json file   
         fs.readFile(gamesFilePath, 'utf-8', (err, data) => {
@@ -28,10 +28,10 @@ export const getGamesByName = (tittle = '') => {
                 reject(err);
             } else {
                 let games = JSON.parse(data);
-                if (tittle) {
-                    //Filter the games by tittle
+                if (title) {
+                    //Filter the games by title
                     games = games.filter(game =>
-                        game.title.toLowerCase().includes(tittle.toLowerCase())
+                        game.title.toLowerCase().includes(title.toLowerCase())
                     );
                 }
                 resolve(games);

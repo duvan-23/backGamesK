@@ -11,10 +11,10 @@ export const getAllGames = async (req, res) => {
 };
 
 export const getGamesByName = async (req, res) => {
-    const { tittle } = req.params; // Get tittle term from route parameters
+    const { title } = req.params; // Get title term from route parameters
     try {
         // get games after filter
-        const games = await gamesModel.getGamesByName(tittle);
+        const games = await gamesModel.getGamesByName(title);
         res.status(200).json({ games });
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch products', message: error.message });
