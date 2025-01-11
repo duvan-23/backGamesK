@@ -16,7 +16,7 @@ const fileNames  = fs.readdirSync(__dirname);
 fileNames.forEach((fileName)=>{
     // get the name of the file
     const name = removeExtension(fileName);
-    if(name!="index"){
+    if(name!="index" && name!="auth"){
         router.use(`/${name}`, async(req, res, next)=>{
             try{
                 //Import the router from the selected file

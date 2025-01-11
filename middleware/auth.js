@@ -17,3 +17,12 @@ export const verifyToken = (req, res, next) => {
     res.status(403).json({ message: 'Invalid Token!' });
   }
 };
+
+export const createToken = (payload, expiresIn = '1h') => {
+    try {
+      const token = jwt.sign(payload, SECRET_KEY, { expiresIn }); // Sign the token
+      return token;
+    } catch (error) {
+      throw new Error('Error generating token: ' + error.message);
+    }
+};
