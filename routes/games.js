@@ -1,9 +1,8 @@
 import Router from "express";
+import * as gamesController from '../controllers/gamesController.js';
 const router = Router();
 
-router.get("/",async(req, res)=>{
-    res.status(200).send({ msg: 'success' });
-});
+router.get("/", gamesController.getAllGames);
 
 
 export default router;
