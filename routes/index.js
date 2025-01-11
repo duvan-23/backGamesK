@@ -14,10 +14,12 @@ const removeExtension = (fileName)=>{
 
 const fileNames  = fs.readdirSync(__dirname);
 fileNames.forEach((fileName)=>{
+    // get the name of the file
     const name = removeExtension(fileName);
     if(name!="index"){
         router.use(`/${name}`, async(req, res, next)=>{
             try{
+                //Import the router from the selected file
                 const module = await import(`./${fileName}`);
                 module.default(req,res, next)
             }catch(e){
