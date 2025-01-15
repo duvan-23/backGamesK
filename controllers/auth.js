@@ -1,4 +1,6 @@
 import * as authModel from '../models/auth.js';
+import logger from '../config/logger.js';
+
 export const login = async (req, res) => {
     const { username, password } = req.body;
     try {
@@ -12,5 +14,6 @@ export const login = async (req, res) => {
 
     }catch (error) {
         res.status(500).json({ error: 'login failed', message: error.message });
+        logger.error(`login failed: ${error.message}`);
     }
 };

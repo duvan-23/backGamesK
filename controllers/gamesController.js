@@ -1,4 +1,5 @@
 import * as gamesModel from '../models/gamesModel.js';
+import logger from '../config/logger.js';
 
 export const getAllGames = async (req, res) => {
     try {
@@ -7,6 +8,7 @@ export const getAllGames = async (req, res) => {
         res.status(200).json( games );
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch games', message: error.message });
+        logger.error(`Failed to fetch games: ${error.message}`);
     }
 };
 
@@ -18,5 +20,6 @@ export const getGamesByName = async (req, res) => {
         res.status(200).json( games );
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch games', message: error.message });
+        logger.error(`Failed to fetch games: ${error.message}`);
     }
 };

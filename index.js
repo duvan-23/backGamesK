@@ -4,6 +4,7 @@ import 'dotenv/config';
 import routes from "./routes/index.js";
 import routesAuth from "./routes/auth.js";
 import { verifyToken } from './middleware/auth.js';
+import logger from './config/logger.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +26,6 @@ app.use('*',(req, res)=>{
 
 // Run server
 app.listen(port, ()=>{
-    console.log("Server is running on port: ", port)
+    logger.info(`Server is running on port: ${port}`);
 });
 
