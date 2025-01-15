@@ -5,14 +5,21 @@ import routes from "./routes/index.js";
 import routesAuth from "./routes/auth.js";
 import { verifyToken } from './middleware/auth.js';
 import logger from './utils/logger.js';
+import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+import swaggerOptions from './utils/swagger.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+//config swagger
+const swaggerSpec = swaggerJsDoc(swaggerOptions);
 // Middleware that allows all origins
 app.use(cors());
 //Middleware that parses incoming Json
 app.use(express.json());
+// Serve Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //Path to obtain the access token
 app.use('/auth',routesAuth);
 //Middleware security to make endpoints more robust with JWT
