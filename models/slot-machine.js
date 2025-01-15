@@ -47,6 +47,10 @@ export const calculateResult = (result, coins) => {
             break; 
         }
     }
+    if (countCoins === 0) {
+        message += ", You don't have enough coins to play!";
+        
+    }
 
     return  {
         text: message,
