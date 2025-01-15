@@ -1,5 +1,5 @@
 import * as authModel from '../models/auth.js';
-import logger from '../config/logger.js';
+import logger from '../utils/logger.js';
 
 export const login = async (req, res) => {
     const { username, password } = req.body;

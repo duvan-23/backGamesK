@@ -1,5 +1,5 @@
 import * as gamesModel from '../models/gamesModel.js';
-import logger from '../config/logger.js';
+import logger from '../utils/logger.js';
 
 export const getAllGames = async (req, res) => {
     try {

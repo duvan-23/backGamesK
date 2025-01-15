@@ -1,5 +1,5 @@
 import * as currencyModel from '../models/currency.js';
-import logger from '../config/logger.js';
+import logger from '../utils/logger.js';
 
 export const currency = async (req, res) => {
     try {

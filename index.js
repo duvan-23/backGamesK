@@ -4,7 +4,7 @@ import 'dotenv/config';
 import routes from "./routes/index.js";
 import routesAuth from "./routes/auth.js";
 import { verifyToken } from './middleware/auth.js';
-import logger from './config/logger.js';
+import logger from './utils/logger.js';
 
 const app = express();
 const port = process.env.PORT || 3000;

@@ -1,5 +1,5 @@
 import * as slotModel from '../models/slot-machine.js';
-import logger from '../config/logger.js';
+import logger from '../utils/logger.js';
 
 export const getParametersGame = async (req, res) => {
     try {
