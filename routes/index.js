@@ -4,7 +4,7 @@ import gamesRoutes from "./games.js";
 import slotRoutes from "./slot-machine.js";
 
 const router = Router();
-
+//Routes
 router.use('/currency',currencyRoutes);
 router.use('/games',gamesRoutes);
 router.use('/slot-machine',slotRoutes);

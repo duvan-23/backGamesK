@@ -1,9 +1,9 @@
 import * as slotModel from '../models/slot-machine.js';
 import logger from '../utils/logger.js';
 
+//Get parameters game
 export const getParametersGame = async (req, res) => {
     try {
-        //get parameters game
         const parameters = slotModel.getParametersGame();
         res.status(200).json( { parameters } );
     } catch (error) {
@@ -12,6 +12,7 @@ export const getParametersGame = async (req, res) => {
     }
 };
 
+//Calculate spin result 
 export const calculateResult = async (req, res) => {
     try {
         let {result, coins} = req.body;

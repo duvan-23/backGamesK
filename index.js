@@ -8,9 +8,10 @@ import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import swaggerOptions from './utils/swagger.js';
 
+//Create server with express
 const app = express();
 
-//config swagger
+//Config swagger
 const swaggerSpec = swaggerJsDoc(swaggerOptions);
 // Middleware that allows all origins
 app.use(cors());
@@ -20,9 +21,9 @@ app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //Path to obtain the access token
 app.use('/auth',routesAuth);
-//Middleware security to make endpoints more robust with JWT
+//Middleware security JWT
 app.use(verifyToken);
-//Use defined routes
+//Defined routes
 app.use('',routes);
 //Route not found
 app.use('*',(req, res)=>{

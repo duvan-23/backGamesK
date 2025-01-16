@@ -5,8 +5,8 @@ const SECRET_KEY = process.env.SECRET_KEY; // Secure key
 
 export const verifyToken = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1]; // Extract Bearer token
-
   if (!token) {
+    //If token does not exist
     return res.status(401).json({ message: 'Access Denied: No Token Provided!' });
   }
 

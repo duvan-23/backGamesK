@@ -7,7 +7,7 @@ const BANANA = process.env.BANANA;
 const COINS = process.env.COINS;
 
 export const getParametersGame = () => {
-
+    //Default reels
     const reels = [
         [CHERRY, LEMON, APPLE, LEMON, BANANA, BANANA, LEMON, LEMON],
         [LEMON, APPLE, LEMON, LEMON, CHERRY, APPLE, BANANA, LEMON],
@@ -15,16 +15,17 @@ export const getParametersGame = () => {
     ];
     return  {
         reels,
-        coins:COINS, //default amount of coins
-        fruits: [CHERRY, LEMON, APPLE, BANANA]
+        coins:COINS, //Default amount of coins
+        fruits: [CHERRY, LEMON, APPLE, BANANA]//Type of fruits
     };
 
 };
 
 export const calculateResult = (result, coins) => {
     let countCoins = coins - 1;
-    let message = "You lost!";
+    let message = "You lost 1 coin!";
     let won = false;
+    //Winning combinations
     let rewards = {
         50: [CHERRY, CHERRY, CHERRY],
         40: [CHERRY, CHERRY],
@@ -39,19 +40,22 @@ export const calculateResult = (result, coins) => {
         .sort((a, b) => b - a); // Sort keys in descending order
     for (let key of sortedKeys) {
         let pattern = rewards[key];
-        
+        //Depending on the pattern, check two or three places on the array
         if (result.slice(0, pattern.length).join() === pattern.join()) {
+            //If the result matches the pattern, the coins won are added
             countCoins += +key; 
+            // Winning message
             message = `Congratulations, you won ${key} coins with ${pattern.join(" ")}!`;
             won = true;
             break; 
         }
     }
     if (countCoins === 0) {
+        //Message in case the player does not have coins to play
         message += ", You don't have enough coins to play!";
         
     }
-
+    
     return  {
         text: message,
         coins: countCoins, 

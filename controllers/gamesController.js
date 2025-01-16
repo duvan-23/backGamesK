@@ -1,9 +1,9 @@
 import * as gamesModel from '../models/gamesModel.js';
 import logger from '../utils/logger.js';
 
+//Get all games
 export const getAllGames = async (req, res) => {
     try {
-        //get games
         const games = await gamesModel.getAllGames();
         res.status(200).json( { games });
     } catch (error) {
@@ -12,10 +12,10 @@ export const getAllGames = async (req, res) => {
     }
 };
 
+//Get games filtered by name
 export const getGamesByName = async (req, res) => {
-    const { title } = req.params; // Get title term from route parameters
+    const { title } = req.params;
     try {
-        // get games after filter
         const games = await gamesModel.getGamesByName(title);
         res.status(200).json( { games });
     } catch (error) {

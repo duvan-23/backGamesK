@@ -1,6 +1,6 @@
 import { body, validationResult } from 'express-validator';
 
-// Middleware to validate request body
+// Middleware to validate the login request body
 export const validateLogin = [
   body('username').exists().withMessage('username is required'),
   body('password').exists().withMessage('password is required'),
@@ -8,11 +8,13 @@ export const validateLogin = [
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      //Send errors in the request body 
       return res.status(400).json({ errors: errors.array() });
     }
     next();
   }
 ];
+// Middleware to validate the slot-machine/calculate request body
 export const validateCalculate = [
   body('result').exists().withMessage('result is required'),
   body('result').isArray().withMessage('result must be an array'),
@@ -21,6 +23,7 @@ export const validateCalculate = [
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      //Send errors in the request body 
       return res.status(400).json({ errors: errors.array() });
     }
     next();

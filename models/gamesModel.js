@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
+//Json path
 const gamesFilePath = path.join(process.cwd(), '/data/game-data.json');
 
 export const getAllGames = () => {
