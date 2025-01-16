@@ -14,7 +14,7 @@ export const verifyToken = (req, res, next) => {
     jwt.verify(token, SECRET_KEY); // Verify token
     next(); // Proceed to the next middleware or route handler
   } catch (error) {
-    res.status(403).json({ message: 'Invalid Token!' });
+    res.status(403).json({ message: 'Unauthorized' });
   }
 };
 
