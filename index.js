@@ -4,13 +4,11 @@ import 'dotenv/config';
 import routes from "./routes/index.js";
 import routesAuth from "./routes/auth.js";
 import { verifyToken } from './middleware/auth.js';
-import logger from './utils/logger.js';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import swaggerOptions from './utils/swagger.js';
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 //config swagger
 const swaggerSpec = swaggerJsDoc(swaggerOptions);
@@ -31,8 +29,4 @@ app.use('*',(req, res)=>{
     res.status(404).send({ "msg": "Route not found"});
 });
 
-// Run server
-app.listen(port, ()=>{
-    logger.info(`Server is running on port: ${port}`);
-});
-
+export default app;
