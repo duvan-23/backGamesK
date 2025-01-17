@@ -1,2 +1,2 @@
 # backGamesK
-Technical test in node js
+this node js project is structured using the MVC (Model-View-Controller) design pattern to ensure maintainability and scalability. The Model handles the data logic. The View (Router) is represented by API responses, serving as the interface between the server and the client. The Controller acts as an intermediary, processing incoming requests, invoking the necessary model logic, and returning appropriate responses. This clear separation of concerns allows for easier debugging, testing, and future enhancements. The project also includes middleware for handling authentication, request validation, and logging.
